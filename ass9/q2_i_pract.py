@@ -30,64 +30,19 @@ dr = pd.DataFrame({
     "3": dt["3"] - mean_3,
     "4": dt["4"] - mean_4,
 })
+print(dr)
 
-# mean_1, mean_2, mean_3, mean_4, dr
-
-
-# In[17]:
-
-
-# matrix, np.transpose(matrix) np.array(dr).shape
 # matrix = []
 # matrix.append(np.array([dr]))
-# matrix
-
-
-# In[18]:
 matrix = dr.to_numpy()
-# print(matrix)
+print(matrix)
 
 dr_transpose = np.transpose(dr)
 # print(dr_transpose)
 # matrix_traspose = []
 matrix_traspose = dr_transpose.to_numpy()
-# print(matrix_traspose)
+print(matrix_traspose)
 # cor_matrix = np.matmul(dr_transpose, dr)
 cor_matrix = np.matmul(matrix, matrix_traspose)
 cor_matrix /= 4
 print(cor_matrix)
-
-# cor_matrix = np.matmul(np.transpose(dr), dr)
-# cor_matrix = np.matmul(np.transpose(dr), dr)
-# cor_matrix /= 4
-# cor_matrix
-
-
-# In[19]:
-
-
-# In[20]:
-
-
-eig_val, eig_vect = la.eig(cor_matrix)
-# eig_val, eig_vect
-
-
-# In[21]:
-
-
-max_component = max(eig_val)
-# max_component
-
-
-# In[22]:
-
-
-eig_vect[0]
-
-
-# In[26]:
-
-
-final_dataset = [np.matmul(matrix, eig_vect[i]) for i in range(4)]
-final_dataset
